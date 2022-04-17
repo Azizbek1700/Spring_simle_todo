@@ -16,16 +16,13 @@ import javax.validation.constraints.Pattern;
 public class AuthCreateDto implements BaseDto {
 
     @NotBlank
-    private Long organizationId;
-
-    @NotBlank
     private String fullName;
 
     @NotBlank
     private String username;
 
     @NotBlank
-    @Pattern(regexp = "[+998][0-9]{9}]")
+//    @Pattern(regexp = "[+998][0-9]{9}]")
     private String phoneNumber;
 
     @NotBlank

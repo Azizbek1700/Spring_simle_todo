@@ -29,11 +29,6 @@ public class AuthUser extends Auditable  {
     private String password;
 
     private String picturePath;
-
-
-    @Column(nullable = false)
-    private Long organizationId;
-
     @Enumerated(EnumType.STRING)
     private Role role;
 

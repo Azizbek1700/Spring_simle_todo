@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import uz.bakhodirov.springtemplate.controller.base.AbstractController;
+import uz.bakhodirov.springtemplate.criteria.GenericCriteria;
 import uz.bakhodirov.springtemplate.dto.responce.DataDto;
 import uz.bakhodirov.springtemplate.dto.todo.TodoCreateDto;
 import uz.bakhodirov.springtemplate.dto.todo.TodoDto;
@@ -33,7 +34,10 @@ public class TodoController extends AbstractController {
     public ResponseEntity<DataDto<List<TodoDto>>> getAll() {
         return todoServices.getAll();
     }
-
+    @GetMapping(PATH+"/listCriteria")
+    public ResponseEntity<DataDto<List<TodoDto>>> getAllCriteria( GenericCriteria criteria) {
+        return todoServices.getAllCriteria( criteria );
+    }
     @GetMapping(PATH + "/todo/get/{id}")
     public ResponseEntity<DataDto<TodoDto>> get(@PathVariable Long id) {
         return todoServices.get(id);

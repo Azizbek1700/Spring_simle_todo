@@ -3,10 +3,12 @@ package uz.bakhodirov.springtemplate.services.todo;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import uz.bakhodirov.springtemplate.criteria.GenericCriteria;
 import uz.bakhodirov.springtemplate.dto.responce.AppErrorDto;
 import uz.bakhodirov.springtemplate.dto.responce.DataDto;
 import uz.bakhodirov.springtemplate.dto.todo.TodoCreateDto;
@@ -107,4 +109,9 @@ public class TodoServices extends AbstractService<TodoRepository, TodoMapper>
     }
 
 
+    public ResponseEntity<DataDto<List<TodoDto>>> getAllCriteria(GenericCriteria criteria) {
+        PageRequest pageRequest = PageRequest.of( criteria.getPage(), criteria.getSize() );
+        List<Todo> studentList = repository.findAll( pageRequest ).toList();
+        return new ResponseEntity<>( new DataDto<>( mapper.toDto( studentList ), (long) studentList.size() ), HttpStatus.OK );
+    }
 }

@@ -31,8 +31,7 @@ public class SpringTemplateApplication {
         @Bean
     public void run() throws Exception {
         CommandLineRunner runner=(a)->{
-            service.createUser(new AuthCreateDto(-1L,
-                    "Baxodirov Azizbek","admin","+9425888695","170120", Role.ADMIN.name()));
+            service.createUser(new AuthCreateDto("Baxodirov Azizbek","admin","+9425888695","123", Role.ADMIN.name()));
         };
         runner.run("s","b");
     }

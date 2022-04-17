@@ -34,10 +34,7 @@ public class SessionUser {
         return user.get().getRole();
     }
 
-    public Long getOrgId() {
-        Optional<AuthUser> user = repository.findByUsernameAndDeletedFalse(this.getUsername());
-        return user.get().getOrganizationId();
-    }
+
 
 
 }
